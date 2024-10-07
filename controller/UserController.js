@@ -67,7 +67,6 @@ const login = (req, res) => {
                 message: 'Unauthorized user',
             }); // 401 : Unauthorized 인증 실패, 403 : forbidden 접근금지
         }
-
     })
 };
 

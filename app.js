@@ -9,14 +9,14 @@ app.listen(process.env.PORT);
 
 const userRouters = require('./routes/users');
 const booksRouters = require('./routes/books');
+const categoryRouters = require('./routes/category');
 const likesRouters = require('./routes/likes');
 const cartsRouters = require('./routes/carts');
 const ordersRouters = require('./routes/orders');
 
 app.use("/users", userRouters);
 app.use("/books", booksRouters);
+app.use("/category", categoryRouters);
 app.use("/likes", likesRouters);
 app.use("/carts", cartsRouters);
 app.use("/orders", ordersRouters);
-
-

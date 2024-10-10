@@ -7,7 +7,7 @@ const {
     passwordResetRequest,
     passwordReset
 }
-    = require("../controller/UserController");
+    = require("../controllers/UserController");
 
 router.use(express.json());
 

@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const {
     allCategory
-} = require("../controller/CategoryController");
+} = require("../controllers/CategoryController");
 
 router.use(express.json())
 

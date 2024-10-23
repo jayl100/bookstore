@@ -9,7 +9,11 @@
     "nodemon": "^3.1.7"
   },
   "scripts": {
-    "start": "node ./app.js",
-    "dev": "nodemon ./app.js"
+    "start": "node bookstore/app.js",
+    "dev": "nodemon bookstore/app.js",
+    "fake": "nodemon faker-API/server.js"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^9.0.3"
   }
 }

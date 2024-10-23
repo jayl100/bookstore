@@ -1,3 +1,4 @@
+const ensureAuthorization = require("../auth");
 const conn = require("../mariadb");
 const {StatusCode, StatusCodes} = require("http-status-codes");
 const jwt = require("jsonwebtoken");
@@ -15,7 +16,7 @@ const addLike = (req, res) => {
         return res.status(StatusCodes.UNAUTHORIZED).json({
             'message': 'Token expired, try again later',
         });
-    } else if (authorization instanceof TokenExpiredError) {
+    } else if (authorization instanceof jwt.TokenExpiredError) {
 
         return res.status(StatusCodes.BAD_REQUEST).json({
             'message': 'Wrong token used, try again later',
@@ -42,7 +43,7 @@ const removeLike = (req, res) => {
         return res.status(StatusCodes.UNAUTHORIZED).json({
             'message': 'Token expired, try again later',
         });
-    } else if (authorization instanceof TokenExpiredError) {
+    } else if (authorization instanceof jwt.JsonWebTokenError) {
 
         return res.status(StatusCodes.BAD_REQUEST).json({
             'message': 'Wrong token used, try again later',
@@ -60,24 +61,6 @@ const removeLike = (req, res) => {
     })
     }
 };
-
-function ensureAuthorization(req, res) {
-
-    try {
-        let receivedJWT = req.headers['authorization'];
-        console.log("receivedJWT : ", receivedJWT);
-
-        let decodedJWT = jwt.verify(receivedJWT, process.env.JWT_SECRET);
-        console.log(decodedJWT);
-
-        return decodedJWT;
-    } catch (err) {
-        console.log(err.name);
-        console.log(err.message);
-
-        return err;
-    }
-}
 
 module.exports = {
     addLike,
